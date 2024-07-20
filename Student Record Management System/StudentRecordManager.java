@@ -52,48 +52,51 @@ public class StudentRecordManager {
     }
     public static void main(String[] args) {
         StudentRecordManager manager = new StudentRecordManager();
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            System.out.println("\n1. Add Student\n2. View Students\n3. Update Student\n4. Delete Student\n5. Exit");
-            System.out.print("Choose an option: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();  // Consume newline
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter name: ");
-                    String name = scanner.nextLine();
-                    System.out.print("Enter roll number: ");
-                    int rollNumber = scanner.nextInt();
-                    scanner.nextLine();  // Consume newline
-                    System.out.print("Enter grade: ");
-                    String grade = scanner.nextLine();
-                    manager.addStudent(new Student(name, rollNumber, grade));
-                    break;
-                case 2:
-                    manager.viewStudents();
-                    break;
-                case 3:
-                    System.out.print("Enter roll number of student to update: ");
-                    int updateRollNumber = scanner.nextInt();
-                    scanner.nextLine();  // Consume newline
-                    System.out.print("Enter new name: ");
-                    String newName = scanner.nextLine();
-                    System.out.print("Enter new grade: ");
-                    String newGrade = scanner.nextLine();
-                    manager.updateStudent(updateRollNumber, newName, newGrade);
-                    break;
-                case 4:
-                    System.out.print("Enter roll number of student to delete: ");
-                    int deleteRollNumber = scanner.nextInt();
-                    manager.deleteStudent(deleteRollNumber);
-                    break;
-                case 5:
-                    System.out.println("Exiting...");
-                    return;
-                default:
-                    System.out.println("Invalid option. Try again.");
+        try (Scanner scanner = new Scanner(System.in)) {
+            while (true) {
+                System.out.println("\n1. Add Student\n2. View Students\n3. Update Student\n4. Delete Student\n5. Exit");
+                System.out.print("Choose an option: ");
+                int choice = scanner.nextInt();
+                scanner.nextLine();  
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter name: ");
+                        String name = scanner.nextLine();
+                        System.out.print("Enter roll number: ");
+                        int rollNumber = scanner.nextInt();
+                        scanner.nextLine();  // Consume newline
+                        System.out.print("Enter grade: ");
+                        String grade = scanner.nextLine();
+                        manager.addStudent(new Student(name, rollNumber, grade));
+                        break;
+                    case 2:
+                        manager.viewStudents();
+                        break;
+                    case 3:
+                        System.out.print("Enter roll number of student to update: ");
+                        int updateRollNumber = scanner.nextInt();
+                        scanner.nextLine();  // Consume newline
+                        System.out.print("Enter new name: ");
+                        String newName = scanner.nextLine();
+                        System.out.print("Enter new grade: ");
+                        String newGrade = scanner.nextLine();
+                        manager.updateStudent(updateRollNumber, newName, newGrade);
+                        break;
+                    case 4:
+                        System.out.print("Enter roll number of student to delete: ");
+                        int deleteRollNumber = scanner.nextInt();
+                        manager.deleteStudent(deleteRollNumber);
+                        break;
+                    case 5:
+                        System.out.println("Exiting...");
+                        return;
+                    default:
+                        System.out.println("Invalid option. Try again.");
+                }
+                
             }
-            scanner.close();
         }
+        
     }
+
 }
