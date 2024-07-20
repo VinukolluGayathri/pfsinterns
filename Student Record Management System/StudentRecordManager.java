@@ -33,6 +33,7 @@ public class StudentRecordManager {
         students.removeIf(student -> student.getRollNumber() == rollNumber);
         saveToFile();
     }
+    @SuppressWarnings("unchecked")
     private void loadFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             students = (List<Student>) ois.readObject();
@@ -92,6 +93,7 @@ public class StudentRecordManager {
                 default:
                     System.out.println("Invalid option. Try again.");
             }
+            scanner.close();
         }
     }
 }
